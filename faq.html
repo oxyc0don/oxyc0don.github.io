@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)https://gnunn1.github.io/tilix-web/faq -->
+<html lang="en" class="fa-events-icons-ready"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Basic Page Needs
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    
+    
+    <title>Tilix: FAQ</title>
+    
+    <meta name="description" content="Tilix is an advanced GTK3 tiling terminal for Linux based on the Gnome Human Interface Guidelines (HIG).
+">
+    <meta name="author" content="Gerald Nunn">
+    <!-- Mobile Specific Metas
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- FONT
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  	<link href="./css/font-awesome.min.css" rel="stylesheet">
+    <link href="./css/css" rel="stylesheet" type="text/css">
+    <!-- CSS
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="./css/tilix.css">
+
+    <!-- Favicon
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="icon" type="image/png" href="./images/favicon.png">
+    <link rel="alternate" type="application/rss+xml" title="" href="./feed.xml">
+<link href="./css/a51fafec44.css" media="all" rel="stylesheet"></head>
+
+
+<body>
+  <nav class="topnav">
+  <ul class="navigation" id="navbar">
+    <li>
+      <a href="https://oxyc0don.github.io/index.html">
+        <i class="fa fa-terminal" aria-hidden="true"></i> Tilix
+      </a>
+    </li>
+    <li class="scroll"><a href="https://oxyc0don.github.io/index.html/#features">Features</a></li>
+    <li><a href="https://oxyc0don.github.io/news.html/">News</a></li>
+    <li><a href="https://oxyc0don.github.io/faq.html">FAQ</a></li>
+    <li><a href="https://oxyc0don.github.io/documentation.html">Documentation</a></li>
+    <li class="scroll"><a href="https://oxyc0don.github.io/#packages">Download</a></li>
+    <!--
+    <li class="donate"><a href="#">Donate</a></li>
+    -->
+    <li class="hamburger-button">
+      <a href="javascript:void(0);" onclick="navbar()">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <main class="main" aria-label="Content">
+  	<div class="container">
+    
+    <div id="/faqs/general">
+        <h1>General</h1>
+        <div>
+            <h5 id="is-there-a-32-bit-version-available">Is there a 32 bit version available?</h5>
+
+<p>At this time there are no plans for an official 32 bit version of Tilix available. Building, testing and supporting on 32 bit is a significant effort that we’d rather devote to development. The number of people using 32 bit Linux on the desktop is rather small and shrinking all the time so we feel it’s the right choice at this time. Having said that, if people want to build and test Tilix on a 32 bit platform please feel free. If there are any issues, we’d be happy to accept any PRs to fix these issues. Do note though that no official project testing/support is being done to support 32 bit.</p>
+
+<h5 id="why-use-d-instead-of-insert-language-here">Why use D instead of &lt;insert language&gt; here</h5>
+
+<p>My background is in Java and J2EE and while I do some Python programming (via Jython), I have a preference for statically typed languages in the C family. I’ve played around with D in the past and have been impressed with it’s language design and efficiency in comparison and coming from Java it was relatively easy to learn. Finally, D has a very complete GTK binding in the form of <a href="http://www.gtkd.org/">GtkD</a> whereas other languages I considered (Go and Rust) do not.</p>
+
+<h5 id="how-can-i-make-tilix-my-default-terminal">How can I make Tilix my default terminal?</h5>
+
+<p>For debian distributions you can run the following in a terminal:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo update-alternatives --config x-terminal-emulator
+</code></pre></div></div>
+
+<p>And then pick Tilix from menu.</p>
+
+<h5 id="how-can-i-disable-dbus-activation">How can I disable DBus Activation?</h5>
+
+<p>Tilix has DBus activation enabled in the launcher. While for the vast majority of users this does not cause any issues, there have been a few edge cases found in rare situations such as the one identified <a href="https://github.com/gnunn1/tilix/issues/870">here</a>. If you are having this or an issue where the behavior of Tilix is subtlely different then Gnome Terminal, you can try to disable DBus Activation.</p>
+
+<p>To do so, follow these instructions:</p>
+
+<ul>
+  <li>Modify the <code class="language-plaintext highlighter-rouge">/usr/share/applications/com.gexperts.Tilix.desktop</code> file and change the line <code class="language-plaintext highlighter-rouge">DBusActivatable=true</code> to be <code class="language-plaintext highlighter-rouge">DBusActivatable=false</code></li>
+  <li>Log out and back in again</li>
+</ul>
+
+        </div>
+    </div>
+
+    <div id="/faqs/notification">
+        <h1>Notifications</h1>
+        <div>
+            <h5 id="what-are-notifications">What are notifications?</h5>
+
+<p>Tilix has a feature whereby it can send a notification to the desktop when a long running processes ends and tilix is not visible. Additionally, if tilix is the top level window but the process ended in a session which is not visible tilix will display the notification in the header bar.</p>
+
+<h5 id="why-arent-notifications-working-for-me">Why aren’t notifications working for me?</h5>
+
+<p>Currently notifications in Tilix required a version of the VTE widget that was patched by Fedora. This patch has not yet been accepted by upstream but is available in some other distributions such as Arch. In Arch it is available via the <code class="language-plaintext highlighter-rouge">vte-notification-common</code> and <code class="language-plaintext highlighter-rouge">vte3-notification</code> packages.</p>
+
+<h5 id="i-have-the-notification-packages-but-its-still-not-working">I have the notification packages but it’s still not working</h5>
+
+<p>One reason this feature doesn’t work on Arch is because of the VTE configuration issue. Please see this <a href="https://github.com/gnunn1/tilix/wiki/VTE-Configuration-Issue">page</a> for more information on it and how to correct it.</p>
+
+        </div>
+    </div>
+
+    <div id="/faqs/ui">
+        <h1>User Interface</h1>
+        <div>
+            <h5 id="why-are-the-terminal-title-bars-so-large">Why are the terminal title bars so large?</h5>
+
+<p>Tilix complies with the Gnome HIG and the UI of tilix is inspired by <a href="https://wiki.gnome.org/Apps/Builder">Gnome Builder</a>. There is an option in Preferences to either shrink the terminal title bars or hide them completely.</p>
+
+<h5 id="why-arent-sessions-displayed-as-tabs">Why aren’t sessions displayed as tabs?</h5>
+
+<p>While previously a tabbed interface was not supported, starting with 1.7.0 you can opt to use tabs instead of the more traditional sidebar interface. The option is to configure tabs is in the Preferences dialog under Appearance.</p>
+
+<h5 id="when-i-split-a-terminal-it-starts-in-the-home-directory-instead-of-inheriting-the-directory">When I split a terminal it starts in the home directory instead of inheriting the directory</h5>
+
+<p>In Tilix the intention is that a split terminal should open in the same directory as the terminal that was split. The issue is caused by an issue in VTE configuration. This <a href="https://github.com/gnunn1/tilix/wiki/VTE-Configuration-Issue">page</a> has more information on the issue and how to correct it.</p>
+
+<h5 id="is-it-possible-to-use-the-new-overlay-scrollbars-introduced-in-adwaita">Is it possible to use the new overlay scrollbars introduced in Adwaita?</h5>
+
+<p>Yes, by default when using GTK 3.22 or newer overlay scrollbars are used.</p>
+
+<h5 id="how-come-my-scrollbars-are-not-transparent-like-in-adwaita">How come my scrollbars are not transparent like in Adwaita?</h5>
+
+<p>Making scrollbars transparent requires CSS specific to that theme. At this time only Adawita, Ambiance, Radiance and the author’s personal theme, Lavender, are supported.</p>
+
+<h5 id="where-is-the-option-to-get-the-cool-colored-prompts-like-in-the-screenshots">Where is the option to get the cool colored prompts like in the screenshots?</h5>
+
+<p>That comes from <a href="https://github.com/powerline/powerline">powerline</a> and is not something Tilix provides.</p>
+
+<h5 id="i-set-a-background-image-in-preferences-but-it-is-not-visible-how-do-i-fix-this">I set a background image in preferences but it is not visible, how do I fix this?</h5>
+
+<p>Background images requires transparency to work, in order to view the background image you need to adjust the transparency slider in the appropriate profile.</p>
+
+<h5 id="i-am-seeing-some-visual-issues-slow-scrollback-performance-odd-rendering-that-i-dont-see-in-other-vte-based-terminal-emulators">I am seeing some visual issues (slow scrollback performance, odd rendering) that I don’t see in other VTE based terminal emulators?</h5>
+
+<p>By default tilix uses an overlay scrollbar rather then a separate scrollbar. This configuration is more attractive then the regular scrollbar, particularly when tiling terminals. However as far as I am aware Tilix is the only VTE based terminal emulator that does so at this time.</p>
+
+<p>As a result this feature does not receive wide testing and there are a few known issues with it. If you are having issues, try disabling overlay scrollbars in <code class="language-plaintext highlighter-rouge">Preferences | Appearances | Use overlay scrollbars</code>.</p>
+
+        </div>
+    </div>
+
+
+    </div>
+    <!-- Footer
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<footer>
+    <div class="footer-content">
+        <div class="text-muted footer-right">
+            Published by <a href="https://pages.github.com/">GitHub Pages</a> | <a href="https://oxyc0don.github.io/faq.html#top">Back to top</a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</footer>
+<!-- End Document
+                –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
+  </main>
+
+    <!-- Scripts
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="./js/tilix.js"></script>
+<script src="./js/a51fafec44.js"></script>
+
+
+
+
+</body></html>
