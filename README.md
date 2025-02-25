@@ -1,2 +1,1 @@
-# oxyc0don.github.io
- www
+https://oxyc0don.github.io
